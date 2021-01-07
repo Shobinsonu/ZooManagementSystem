@@ -1,0 +1,4 @@
+CREATE PROCEDURE `tot`() 
+BEGIN 
+UPDATE employee SET TotalSal=Salary+Bonus; 
+END

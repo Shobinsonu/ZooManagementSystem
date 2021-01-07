@@ -1,0 +1,35 @@
+  
+        try {
+            String zid=jTextField1.getText();
+        String zn=jTextField2.getText();
+        String loc=jTextField3.getText();
+        String oa=jTextField4.getText();
+        String con=jTextField5.getText();
+        
+            Class.forName("com.mysql.jdbc.Driver");
+             conn = DriverManager.getConnection("jdbc:mysql://localhost/zoo_management","root","");
+             pst = conn.prepareStatement("update zoo set ZName = ?,Location = ?,OpenAT = ?,Contact = ? where ZID = ?");
+             pst.setString(1, zn);
+             pst.setString(2, loc);
+             pst.setString(3, oa);
+             pst.setString(4, con);
+              pst.setString(5, zid);
+             pst.executeUpdate();
+             JOptionPane.showMessageDialog(this,"Zoo updated....");
+                    
+             jTextField1.setText("");
+             jTextField2.setText("");
+             jTextField3.setText("");
+             jTextField4.setText("");
+             jTextField5.setText("");
+             
+             jTextField1.requestFocus();
+             table_update();
+             jButton1.setEnabled(true);
+             
+                    
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Zoo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Zoo.class.getName()).log(Level.SEVERE, null, ex);
+        }

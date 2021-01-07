@@ -1,0 +1,9 @@
+CREATE TRIGGER `after_zoo_update` 
+AFTER UPDATE ON `zoo` FOR EACH ROW
+
+BEGIN 
+UPDATE zoo_backup1 set ZName=NEW.ZName WHERE ZName=OLD.ZName; 
+UPDATE zoo_backup1 set Location=NEW.Location WHERE Location=OLD.Location; 
+UPDATE zoo_backup1 set OpenAT=NEW.OpenAT WHERE OpenAT=OLD.OpenAT; 
+UPDATE zoo_backup1 set Contact=NEW.Contact WHERE Contact=OLD.Contact; 
+END

@@ -1,0 +1,6 @@
+CREATE TRIGGER `after_zoo_insert` 
+AFTER INSERT ON `zoo` FOR EACH ROW 
+
+BEGIN 
+insert into zoo_backup1 VALUES(NEW.ZID,NEW.ZName,NEW.Location,NEW.OpenAT,NEW.Contact); 
+END
